@@ -1,10 +1,10 @@
 package com.hospital.repository;
 
 import com.hospital.model.Doctor;
+import com.hospital.model.Department; // Add this import
+import java.util.List;               // Add this import
 import org.springframework.data.jpa.repository.JpaRepository;
-import java.util.Optional;
 
 public interface DoctorRepository extends JpaRepository<Doctor, Long> {
-    Optional<Doctor> findByDoctorId(String doctorId);
-    List<Doctor> findByDepartment(Department department);
+    List<Doctor> findByDepartment(Department department); // Now properly typed
 }

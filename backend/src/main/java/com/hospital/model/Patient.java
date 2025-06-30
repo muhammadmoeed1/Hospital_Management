@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Entity
 @Getter @Setter
-public class Doctor {
+public class Patient {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,8 +16,13 @@ public class Doctor {
     private String nationalId;
     
     @Column(unique = true)
-    private String doctorId;
+    private String patientId;
     
-    @Enumerated(EnumType.STRING)
-    private Department department;
+    @ManyToOne
+    @JoinColumn(name = "doctor_id")
+    private Doctor doctor;
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "bill_id", referencedColumnName = "id")
+    private Bill bill;
 }

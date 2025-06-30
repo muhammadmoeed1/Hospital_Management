@@ -4,20 +4,17 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Getter @Setter
-public class Doctor {
+public class Bill {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private String name;
-    private String nationalId;
-    
-    @Column(unique = true)
-    private String doctorId;
-    
-    @Enumerated(EnumType.STRING)
-    private Department department;
+    private String billNumber;
+    private double amount;
+    private LocalDateTime generatedDate = LocalDateTime.now();
 }
